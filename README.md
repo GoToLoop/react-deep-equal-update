@@ -1,6 +1,6 @@
 # react-deep-equal-update
 @update implements `shouldComponentUpdate`
-usesing [deep-equal](https://www.npmjs.com/package/deep-equal) 
+using [deep-equal](https://www.npmjs.com/package/deep-equal) 
 to determine if a component should be re-rendered.
 
 Note: This documentation contains TypeScript examples but you 
@@ -34,7 +34,7 @@ interface TestProps {
 
 If we want to re-render the component only when its properties
 change we would need to use a deep-equality check and implement the
-[`shouldComponentUpdate`]() method.
+[`shouldComponentUpdate`](http://bit.ly/1QnAYEH) method.
 
 > By default, `shouldComponentUpdate` always returns `true` to prevent 
 subtle bugs when state is mutated in place, but if you are careful 

@@ -13,15 +13,14 @@ var gulp        = require("gulp"),
     uglify      = require("gulp-uglify"),
     runSequence = require("run-sequence"),
     mocha       = require("gulp-mocha"),
-    istanbul    = require("gulp-istanbul"),
-    browserSync = require('browser-sync').create();
+    istanbul    = require("gulp-istanbul");
     
 //******************************************************************************
 //* LINT
 //******************************************************************************
 gulp.task("lint", function() {
     return gulp.src([
-        "source/**/**.ts",
+        "src/**/**.ts",
         "test/**/**.test.ts"
     ])
     .pipe(tslint({ }))
@@ -35,12 +34,13 @@ var tsProject = tsc.createProject("tsconfig.json");
 
 gulp.task("build-app", function() {
     return gulp.src([
-            "source/**/**.ts",
+            "src/**/**.ts",
+            "src/**/**.tsx",
             "typings/main.d.ts/",
-            "source/interfaces/interfaces.d.ts"
+            "src/interfaces.d.ts"
         ])
         .pipe(tsc(tsProject))
-        .js.pipe(gulp.dest("source/"));
+        .js.pipe(gulp.dest("src/"));
 });
 
 var tsTestProject = tsc.createProject("tsconfig.json");
@@ -48,8 +48,9 @@ var tsTestProject = tsc.createProject("tsconfig.json");
 gulp.task("build-test", function() {
     return gulp.src([
             "test/**/*.ts",
+            "test/**/*.tsx",
             "typings/main.d.ts/",
-            "source/interfaces/interfaces.d.ts"
+            "src/interfaces.d.ts"
         ])
         .pipe(tsc(tsTestProject))
         .js.pipe(gulp.dest("test/"));
@@ -63,7 +64,7 @@ gulp.task("build", function(cb) {
 //* TEST
 //******************************************************************************
 gulp.task("istanbul:hook", function() {
-    return gulp.src(['source/**/*.js'])
+    return gulp.src(['src/**/*.js'])
         // Covering files
         .pipe(istanbul())
         // Force `require` to return covered files
@@ -81,8 +82,8 @@ gulp.task("test", ["istanbul:hook"], function() {
 //******************************************************************************
 gulp.task("bundle", function() {
   
-    var libraryName = "myapp";
-    var mainTsFilePath = "source/main.js";
+    var libraryName = "updateWhenNotDeepEqual";
+    var mainTsFilePath = "src/index.js";
     var outputFolder   = "dist/";
     var outputFileName = libraryName + ".min.js";
 
@@ -99,19 +100,6 @@ gulp.task("bundle", function() {
         .pipe(uglify())
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(outputFolder));
-});
-
-//******************************************************************************
-//* DEV SERVER
-//******************************************************************************
-gulp.task("watch", ["default"], function () {
-    
-    browserSync.init({
-        server: "."
-    });
-    
-    gulp.watch([ "source/**/**.ts", "test/**/*.ts"], ["default"]);
-    gulp.watch("dist/*.js").on('change', browserSync.reload); 
 });
 
 //******************************************************************************

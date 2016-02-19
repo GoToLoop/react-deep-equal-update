@@ -2,7 +2,7 @@
 
 import * as deepEqual from "deep-equal";
 
-let updateWhenNotDeepEqual: updateWhenNotDeepEqualDecorator = function update(subprop?: (string|subprop)) {
+export default function updateWhenNotDeepEqual(subprop?: (string|subprop)) {
     return function(target: any) {
         target.prototype.shouldComponentUpdate = function (nextProps: Object) {
 
@@ -28,5 +28,3 @@ let updateWhenNotDeepEqual: updateWhenNotDeepEqualDecorator = function update(su
         return target;
     };
 };
-
-export default updateWhenNotDeepEqual;

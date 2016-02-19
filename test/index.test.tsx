@@ -3,25 +3,25 @@
 
 import { expect } from "chai";
 import * as React from "react";
-import updateWhenNotDeepEqual from "../src/decorator";
+import updateWhenNotDeepEqual from "../src/index";
 
 interface TestProps {
     id: number;
     subprop1: {
         subprop11: {
             subprop111: {
-                value: string;
+                val: string;
             },
             subprop112?: {
-                value: string;
+                val: string;
             }
         },
         subprop12?: {
             subprop121: {
-                value: string;
+                val: string;
             },
             subprop122?: {
-                value: string;
+                val: string;
             }
         };
     };
@@ -32,18 +32,18 @@ let mockProps: TestProps = {
     subprop1: {
         subprop11: {
             subprop111: {
-                value: "111"
+                val: "111"
             },
             subprop112: {
-                value: "112"
+                val: "112"
             }
         },
         subprop12: {
             subprop121: {
-                value: "121"
+                val: "121"
             },
             subprop122: {
-                value: "122"
+                val: "122"
             }
         }
     }
@@ -91,49 +91,9 @@ describe("@updateWhenNotDeepEqual", () => {
 
     });
 
-    it("Should throw when sub-property (string) cannot be found", () => {
-
-        @updateWhenNotDeepEqual("wrongPropName")
-        class TestComponent extends React.Component<TestProps, void> {
-
-            constructor(props: TestProps) {
-                super(props);
-            }
-
-            public render() {
-                return (<div></div>);
-            }
-        }
-
-        let component = new TestComponent(mockProps);
-        let nextprops = Object.assign({}, mockProps, { id: 2 });
-        // TODO expect()
-
-    });
-
     it("Should use sub-properties when type of suprop is a function", () => {
 
         @updateWhenNotDeepEqual((props: TestProps) => { return props.subprop1.subprop12.subprop121; })
-        class TestComponent extends React.Component<TestProps, void> {
-
-            constructor(props: TestProps) {
-                super(props);
-            }
-
-            public render() {
-                return (<div></div>);
-            }
-        }
-
-        let component = new TestComponent(mockProps);
-        let nextprops = Object.assign({}, mockProps, { id: 2 });
-        // TODO expect()
-
-    });
-
-    it("Should throw when sub-property (function) cannot be found", () => {
-
-        @updateWhenNotDeepEqual((props: TestProps) => { return props.subprop1.subprop12["wrongPropName"]; })
         class TestComponent extends React.Component<TestProps, void> {
 
             constructor(props: TestProps) {

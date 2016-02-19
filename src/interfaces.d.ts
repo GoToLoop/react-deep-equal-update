@@ -3,6 +3,6 @@
 declare type subprop = (props: Object) => Object;
 declare type updateWhenNotDeepEqualDecorator = (subprop?: (string|subprop)) => ClassDecorator;
 
-interface Object extends Object {
+interface Object {
     assign(...objs: Object[]): Object;
 }
