@@ -1,0 +1,37 @@
+{
+  "name": "react-deep-equal-update",
+  "version": "1.0.0",
+  "description": "A decorator that helps you to find out if a shouldComponentUpdate in React",
+  "main": "dist/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WolkSoftwareLtd/react-deep-equal-update.git"
+  },
+  "keywords": [
+    "react",
+    "component",
+    "should",
+    "update",
+    "deep",
+    "equal",
+    "decorator"
+  ],
+  "author": "Remo H. Jansen <remo.jansen@wolksoftware.com> (http://www.remojansen.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WolkSoftwareLtd/react-deep-equal-update/issues"
+  },
+  "homepage": "https://github.com/WolkSoftwareLtd/react-deep-equal-update#readme",
+  "dependencies": {
+    "deep-equal": "^1.0.1"
+  },
+  "devDependencies": {
+    "react": "^0.14.7"
+  }
+}
