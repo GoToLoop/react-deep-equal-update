@@ -48,7 +48,7 @@ replacements.
 This small module helps you to achieve that using a decorator named
 `updateWhenNotDeepEqual`:
 
-# Compare the entire props object on `shouldComponentUpdate`:
+### Working with properties
 ```
 import * as React from "react";
 import updateWhenNotDeepEqual from "../src/decorator";
@@ -65,7 +65,7 @@ class TestComponent extends React.Component<TestProps, void> {
     }
 }
 ```
-# Compare the a direct sub-prop on `shouldComponentUpdate`:
+### Working with direct sub-properties:
 If you just want to re-render the component when one of its direct sub-properties
 has been updated you can pass the name od the sup-property to the decorator:
 
@@ -83,8 +83,8 @@ class TestComponent extends React.Component<TestProps, void> {
 }
 ```
 
-# Compare the an indirect sub-prop on `shouldComponentUpdate`:
-Finally, if you just want to re-render the component when one of its indirect
+### Working with deep sub-properties:
+Finally, if you just want to re-render the component when one of its deep
 sub-properties has been updated you can pass the name od the sup-property 
 to the decorator:
 ```
