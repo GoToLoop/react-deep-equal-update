@@ -23,4 +23,3 @@ function updateWhenNotDeepEqual(subprop) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = updateWhenNotDeepEqual;
-;
