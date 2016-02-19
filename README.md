@@ -65,7 +65,7 @@ class TestComponent extends React.Component<TestProps, void> {
     }
 }
 ```
-### Working with direct sub-properties:
+### Working with direct sub-properties
 If you just want to re-render the component when one of its direct sub-properties
 has been updated you can pass the name od the sup-property to the decorator:
 
@@ -83,7 +83,7 @@ class TestComponent extends React.Component<TestProps, void> {
 }
 ```
 
-### Working with deep sub-properties:
+### Working with deep sub-properties
 Finally, if you just want to re-render the component when one of its deep
 sub-properties has been updated you can pass the name od the sup-property 
 to the decorator:

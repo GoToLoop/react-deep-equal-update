@@ -12,6 +12,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var sinon = require("sinon");
 var React = require("react");
 var index_1 = require("../src/index");
 var mockProps = {
@@ -36,6 +37,13 @@ var mockProps = {
     }
 };
 describe("@updateWhenNotDeepEqual", function () {
+    var sandbox;
+    beforeEach(function () {
+        sandbox = sinon.sandbox.create();
+    });
+    afterEach(function () {
+        sandbox.restore();
+    });
     it("Should implement shouldComponentUpdate", function () {
         var TestComponent = (function (_super) {
             __extends(TestComponent, _super);
@@ -53,6 +61,7 @@ describe("@updateWhenNotDeepEqual", function () {
         })(React.Component);
         var component = new TestComponent(mockProps);
         var nextprops = Object.assign({}, mockProps, { id: 2 });
+        console.log(component);
     });
     it("Should use sub-properties when type of suprop is a string", function () {
         var TestComponent = (function (_super) {

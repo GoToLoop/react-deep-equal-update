@@ -2,7 +2,9 @@
 /// <reference path="../src/interfaces.d.ts"/>
 
 import { expect } from "chai";
+import * as sinon from "sinon";
 import * as React from "react";
+import { render } from "react-dom";
 import updateWhenNotDeepEqual from "../src/index";
 
 interface TestProps {
@@ -51,6 +53,16 @@ let mockProps: TestProps = {
 
 describe("@updateWhenNotDeepEqual", () => {
 
+    let sandbox: Sinon.SinonSandbox;
+
+    beforeEach(() => {
+        sandbox = sinon.sandbox.create();
+    });
+
+    afterEach(() => {
+        sandbox.restore();
+    });
+
     it("Should implement shouldComponentUpdate", () => {
 
         @updateWhenNotDeepEqual()
@@ -67,7 +79,7 @@ describe("@updateWhenNotDeepEqual", () => {
 
         let component = new TestComponent(mockProps);
         let nextprops = Object.assign({}, mockProps, { id: 2 });
-        // TODO expect()
+        console.log(component);
 
     });
 
