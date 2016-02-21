@@ -108,5 +108,5 @@ class TestComponent extends React.Component<TestProps, void> {
 }
 ```
 
-> NOTE: `@updateWhenNotDeepEqual` asumes that your components have properties and **no state**
-the implementation of `shouldComponentUpdate` ignores the component's state.
+> **Note: The `updateWhenNotDeepEqual` decorator asumes that your components have properties 
+and NO STATE the implementation of `shouldComponentUpdate` ignores the component's state.**
