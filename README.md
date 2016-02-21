@@ -77,7 +77,7 @@ If you just want to re-render the component when one of its direct sub-propertie
 has been updated you can pass the name od the sup-property to the decorator:
 
 ```
-@updateWhenNotDeepEqual("subprop12")
+@updateWhenNotDeepEqual("subprop1")
 class TestComponent extends React.Component<TestProps, void> {
 
     constructor(props: TestProps) {
