@@ -1,0 +1,11 @@
+src
+test
+typings
+coverage
+gulpfile.js
+karma.conf.js
+tsconfig.json
+typings.json
+.travis.yml
+.gitignore
+node_modules

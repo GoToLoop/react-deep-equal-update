@@ -13,7 +13,8 @@ var gulp        = require("gulp"),
     uglify      = require("gulp-uglify"),
     runSequence = require("run-sequence"),
     mocha       = require("gulp-mocha"),
-    istanbul    = require("gulp-istanbul");
+    istanbul    = require("gulp-istanbul"),
+    coveralls   = require("gulp-coveralls");
     
 //******************************************************************************
 //* LINT
@@ -60,17 +61,23 @@ gulp.task("build", function(cb) {
 //* TEST
 //******************************************************************************
 gulp.task("istanbul:hook", function() {
-    return gulp.src(['src/**/*.js'])
-        // Covering files
-        .pipe(istanbul())
-        // Force `require` to return covered files
-        .pipe(istanbul.hookRequire());
+  return gulp.src(['src/**/*.js'])
+      // Covering files
+      .pipe(istanbul())
+      // Force `require` to return covered files
+      .pipe(istanbul.hookRequire());
 });
 
-gulp.task("test", ["istanbul:hook"], function() {
-    return gulp.src('test/**/*.test.js')
-        .pipe(mocha({ui: 'bdd'}))
-        .pipe(istanbul.writeReports());
+gulp.task("mocha", function() {
+  return gulp.src("test/**/*.test.js")
+    .pipe(mocha({ui: 'bdd'}))
+    .pipe(istanbul.writeReports());
+});
+
+gulp.task("cover", function() {
+  if (!process.env.CI) return;
+  return gulp.src("coverage/**/lcov.info")
+      .pipe(coveralls());
 });
 
 //******************************************************************************
@@ -102,5 +109,5 @@ gulp.task("bundle", function() {
 //* DEFAULT
 //******************************************************************************
 gulp.task("default", function (cb) {
-    runSequence("lint", "build", "test", "bundle", cb);
+    runSequence("lint", "build", "istanbul:hook", "mocha", "bundle", cb);
 });

@@ -1,5 +1,12 @@
 # react-deep-equal-update
 
+[![Build Status](https://secure.travis-ci.org/remojansen/react-deep-equal-update.svg?branch=master)](https://travis-ci.org/remojansen/react-deep-equal-update)
+[![Coverage Status](https://coveralls.io/repos/remojansen/react-deep-equal-update/badge.svg?branch=master)](https://coveralls.io/r/remojansen/react-deep-equal-update?branch=master)
+[![npm version](https://badge.fury.io/js/react-deep-equal-update.svg)](http://badge.fury.io/js/react-deep-equal-update)
+[![Dependencies](https://david-dm.org/remojansen/react-deep-equal-update.svg)](https://david-dm.org/remojansen/react-deep-equal-update#info=dependencies)
+[![img](https://david-dm.org/remojansen/react-deep-equal-update/dev-status.svg)](https://david-dm.org/remojansen/react-deep-equal-update/#info=devDependencies)
+[![img](https://david-dm.org/remojansen/react-deep-equal-update/peer-status.svg)](https://david-dm.org/remojansen/react-deep-equal-update/#info=peerDependenciess)
+
 A decorator that uses [deep-equal](https://www.npmjs.com/package/deep-equal) 
 to determine if a component should be re-render.
 
@@ -100,3 +107,6 @@ class TestComponent extends React.Component<TestProps, void> {
     }
 }
 ```
+
+> NOTE: `@updateWhenNotDeepEqual` asumes that your components have properties and **no state**
+the implementation of `shouldComponentUpdate` ignores the component's state.

@@ -2,7 +2,7 @@
 
 import * as deepEqual from "deep-equal";
 
-export default function updateWhenNotDeepEqual(subprop?: (string|subprop)) {
+export default function updateWhenNotDeepEqual(subprop?: (string|subprop), substate?: (string|subprop)) {
     return function(target: any) {
         target.prototype.shouldComponentUpdate = function (nextProps: Object) {
 
@@ -17,13 +17,18 @@ export default function updateWhenNotDeepEqual(subprop?: (string|subprop)) {
                 if (typeof subprop === "string") {
                     _nextProps = _nextProps[subprop];
                     _props = _props[subprop];
-                } else if (typeof subprop === "function") {
+                }
+
+                if (typeof subprop === "function") {
                     _nextProps = subprop(_nextProps);
                     _props = subprop(_props);
                 }
+
             }
 
-            return !deepEqual(_nextProps, _props);
+            let updateByProps = !deepEqual(_nextProps, _props);
+            return updateByProps;
+
         };
         return target;
     };
