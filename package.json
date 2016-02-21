@@ -1,7 +1,7 @@
 {
   "name": "react-deep-equal-update",
   "version": "1.0.1",
-  "description": "A decorator that helps you to find out if a shouldComponentUpdate in React",
+  "description": "A decorator that uses deep-equal to determine if a component should be re-render.",
   "main": "dist/updateWhenNotDeepEqual.min.js",
   "directories": {
     "test": "test"
