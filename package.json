@@ -1,6 +1,6 @@
 {
   "name": "react-deep-equal-update",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A decorator that helps you to find out if a shouldComponentUpdate in React",
   "main": "dist/updateWhenNotDeepEqual.min.js",
   "directories": {
