@@ -8,7 +8,7 @@
 [![img](https://david-dm.org/remojansen/react-deep-equal-update/peer-status.svg)](https://david-dm.org/remojansen/react-deep-equal-update/#info=peerDependenciess)
 
 A decorator that uses [deep-equal](https://www.npmjs.com/package/deep-equal) 
-to determine if a component should be re-render.
+to determine if a component should be updated.
 
 ## How it works?
 > **Note: This documentation contains TypeScript examples but you 
