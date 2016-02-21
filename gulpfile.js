@@ -109,5 +109,5 @@ gulp.task("bundle", function() {
 //* DEFAULT
 //******************************************************************************
 gulp.task("default", function (cb) {
-    runSequence("lint", "build", "istanbul:hook", "mocha", "bundle", cb);
+    runSequence("lint", "build", "istanbul:hook", "mocha", "cover", "bundle", cb);
 });
