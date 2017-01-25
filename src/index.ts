@@ -2,7 +2,7 @@
 
 import * as deepEqual from 'deep-equal';
 
-export default function updateWhenNotDeepEqual(subprop?: string | subprop, substate?: string | subprop): ClassDecorator {
+export default function updateWhenNotDeepEqual(subprop?: string | subprop, substate?: string | subprop) {
     return <TFn extends Function>(target: TFn) => {
         target.prototype.shouldComponentUpdate = function (nextProps: Object) {
             let _nextProps = nextProps, _props = this.props;
