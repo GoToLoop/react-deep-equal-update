@@ -14,7 +14,7 @@ export default function updateWhenNotDeepEqual(subprop?: string | subprop, subst
                 if (typeof subprop === 'string') {
                     _nextProps = _nextProps[subprop];
                     _props = _props[subprop];
-                } else {
+                } else if (typeof subprop === 'function') {
                     _nextProps = subprop(_nextProps);
                     _props = subprop(_props);
                 }
